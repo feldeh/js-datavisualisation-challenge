@@ -5,32 +5,35 @@ const table1 = document.getElementById('table1')
 
 // add element above table
 
-const canvas = document.createElement('canvas')
+const table1Canvas = document.createElement('canvas')
+table1Canvas.setAttribute('id', 'table1Canvas')
 
 
-// const parentNode = table1.parentNode
-// parentNode.insertBefore(canvas, table1)
 
-table1.before(canvas)
 
-const ctx = canvas.getContext('2d');
+table1.before(table1Canvas)
 
-var pays = [100,200,300,400,500,600,700,800,900,1000];
+const ctx = table1Canvas.getContext('2d');
+
+var tableYear = [2002,2003,2004,2005];
 
 new Chart(ctx, {
   type: "line",
   data: {
-    labels: pays,
+    labels: tableYear,
     datasets: [{ 
-      data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+      data: [860,1140,1060,1060],
+      label: "country1",
       borderColor: "red",
       fill: false
     }, { 
-      data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+      data: [1600,1700,1700,1900],
+      label: "country2",
       borderColor: "green",
       fill: false
     }, { 
-      data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
+      data: [300,700,2000,5000],
+      label: "country3",
       borderColor: "blue",
       fill: false
     }]
@@ -46,21 +49,32 @@ new Chart(ctx, {
 
 
 
-const tableData = []
+let table1Value = []
+let table1Countries = []
+let table1Year = []
 
 
 
-function getData(table) {
-    const tableData = []
 
-    for (let i = 0; i < table.rows.length; i++) {
-        const tr = table.rows[i]
-        const rowData = []
-        for (let j = 0; j < tr.cells.length; j++) {
-            const td = tr.cells[j]
-            // console.log(td)
-        }
+function getTableData(table, tableYear) {  
+    const year = []
+    const countries = []
+    const value = []
+    // get year data
+    for (let i = 2; i < table.getElementsByTagName('tr')[1].getElementsByTagName('th').length; i++) {
+        year.push(table.getElementsByTagName('tr')[1].getElementsByTagName('th')[i].innerText)
+        console.log(i)
+        console.log(year)
     }
+    tableYear.push(year)
+    console.log(tableYear)
+
+
+
+
+
+
+
 }
 
 
